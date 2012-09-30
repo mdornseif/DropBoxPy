@@ -6,8 +6,12 @@ unless you're implementing unsupport methods.
 
 
 import httplib
-import simplejson as json
 import urllib
+
+try:
+    import simplejson as json
+except:
+    import json
 
 
 class RESTClient(object):
@@ -47,7 +51,7 @@ class RESTClient(object):
         if body:
             headers["Content-type"] = "application/x-www-form-urlencoded"
 
-        conn = httplib.HTTPConnection(self.host, self.port)
+        conn = httplib.HTTPConnection(self.host, self.port, timeout=30)
         conn.request(method, url, body, headers)
 
         if raw_response:

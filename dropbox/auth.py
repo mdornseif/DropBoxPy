@@ -8,9 +8,13 @@ in order to work with the API.
 
 import httplib
 import urllib
-import simplejson as json
 from libs.oauth import oauth
 from ConfigParser import SafeConfigParser
+
+try:
+    import simplejson as json
+except:
+    import json
 
 REALM="No Realm"
 HTTP_DEBUG_LEVEL=0
